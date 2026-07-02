@@ -1,0 +1,31 @@
+/*El siguiente programa calcula el factorial de un número:
+inicio
+mostrar fin_linea, "Introduzca un entero positivo: "
+leer n
+factorial Å 1
+para iÅ1 .. n, +1
+factorial Å factorial * i
+finPara
+mostrar fin_linea , "El factorial de ", n ," es: ", factorial
+fin Modifíquelo transformando la estructura para en una estructura mientras. Luego traduzca las dos versiones del programa a un lenguaje de programación como C++.*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Introduzca un entero positivo: ";
+    cin >> n;
+
+    long long factorial = 1;
+    int i = 1; // Inicializamos nuestra variable de control antes del bucle
+
+    // Cambiamos el 'para' por un 'mientras'
+    while (i <= n) {
+        factorial = factorial * i;
+        i++; // Incrementamos manualmente la variable en +1
+    }
+
+    cout << "El factorial de " << n << " es: " << factorial << "\n";
+    return 0;
+}
