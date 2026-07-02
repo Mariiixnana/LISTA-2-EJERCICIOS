@@ -1,0 +1,27 @@
+//Realizar un algoritmo que calcule la potencia de un número real elevado a un número real dado su numerador y denominador.
+#include <iostream>
+#include <cmath> // <--- Importante para usar la función pow
+
+using namespace std;
+
+int main() {
+    double base;
+    double numerador, denominador; // Cambiados a double para evitar que la división se trunque
+
+    cout << "Ingrese la base: ";
+    cin >> base;
+    cout << "Ingrese el numerador del exponente: ";
+    cin >> numerador;
+    cout << "Ingrese el denominador del exponente : ";
+    cin >> denominador;
+
+    // 1. Calculamos el exponente real en decimal 
+    double exponente = numerador / denominador;
+
+    // 2. Usamos pow() para calcular la potencia con raíz incluida
+    double resultadoFinal = pow(base, exponente); 
+
+    cout << "El resultado exacto es: " << resultadoFinal << "\n";
+
+    return 0;
+}
