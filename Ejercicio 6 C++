@@ -1,0 +1,45 @@
+//Escriba un programa que lea dos fechas dadas por un día, mes y año e indique cuál de ellas es anterior en el tiempo a la otra. El programa seguirá leyendo pares de fechas hasta que se introduzca un valor 0 como día de la primera fecha (en tal caso, no seguirá leyendo dicha fecha).
+#include <iostream>
+using namespace std;
+
+int main() {
+    int d1, m1, a1, d2, m2, a2;
+
+    while (true) {
+        cout << "\n--- Comparador de Fechas (Introduce 0 en el Dia 1 para salir) ---\n";
+        cout << "Fecha 1 - Ingrese Dia, Mes y Año separados por espacios: ";
+        cin >> d1;
+        
+        if (d1 == 0) { // Condición de parada obligatoria
+            break; 
+        }
+        cin >> m1 >> a1;
+
+        cout << "Fecha 2 - Ingrese Dia, Mes y Año separados por espacios: ";
+        cin >> d2 >> m2 >> a2;
+
+        // Comparamos jerárquicamente: Año, luego Mes, luego Día
+        if (a1 < a2) {
+            cout << "La primera fecha es anterior.\n";
+        } else if (a1 > a2) {
+            cout << "La segunda fecha es anterior.\n";
+        } else { // Si los años son iguales, miramos los meses
+            if (m1 < m2) {
+                cout << "La primera fecha es anterior.\n";
+            } else if (m1 > m2) {
+                cout << "La segunda fecha es anterior.\n";
+            } else { // Si los meses son iguales, miramos los días
+                if (d1 < d2) {
+                    cout << "La primera fecha es anterior.\n";
+                } else if (d1 > d2) {
+                    cout << "La segunda fecha es anterior.\n";
+                } else {
+                    cout << "Ambas fechas son exactamente iguales.\n";
+                }
+            }
+        }
+    }
+
+    cout << "Programa terminado con exito.\n";
+    return 0;
+}
