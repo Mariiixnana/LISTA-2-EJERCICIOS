@@ -1,0 +1,57 @@
+//Modifique el programa anterior para que permita un número máximo de intentos (dado por la constante MAXINTENTOS, superados los cuales terminará imprimiendo el mensaje "Lo siento, ha perdido".
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Definimos una constante para el máximo de intentos permitidos
+    const int MAXINTENTOS = 3;
+    
+    int d1, m1, a1, d2, m2, a2;
+    int intentos = 0; // Contador de intentos realizados
+
+    while (intentos < MAXINTENTOS) {
+        cout << "\n--- Comparador de Fechas (Intento " << (intentos + 1) << " de " << MAXINTENTOS << ") ---\n";
+        cout << "Fecha 1 - Ingrese Dia, Mes y Año separados por espacios: ";
+        cin >> d1;
+        
+        if (d1 == 0) { 
+            break; // Si introduce 0, el juego se interrumpe voluntariamente
+        }
+        cin >> m1 >> a1;
+
+        cout << "Fecha 2 - Ingrese Dia, Mes y Año separados por espacios: ";
+        cin >> d2 >> m2 >> a2;
+
+        // Lógica de comparación jerárquica
+        if (a1 < a2) {
+            cout << "La primera fecha es anterior.\n";
+        } else if (a1 > a2) {
+            cout << "La segunda fecha es anterior.\n";
+        } else {
+            if (m1 < m2) {
+                cout << "La primera fecha es anterior.\n";
+            } else if (m1 > m2) {
+                cout << "La segunda fecha es anterior.\n";
+            } else {
+                if (d1 < d2) {
+                    cout << "La primera fecha es anterior.\n";
+                } else if (d1 > d2) {
+                    cout << "La segunda fecha es anterior.\n";
+                } else {
+                    cout << "Ambas fechas son exactamente iguales.\n";
+                }
+            }
+        }
+
+        intentos++; // Sumamos un intento procesado
+    }
+
+    // Si el ciclo terminó porque se agotaron los intentos, muestra el mensaje de pérdida
+    if (intentos == MAXINTENTOS) {
+        cout << "\nLo siento, ha perdido.\n";
+    } else {
+        cout << "\nPrograma terminado por el usuario.\n";
+    }
+
+    return 0;
+}
