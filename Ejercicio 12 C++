@@ -1,0 +1,56 @@
+//Una compañía desea transmitir datos por teléfono pero están preocupados de que sus teléfonos estén "pinchados". Todos sus datos es transmiten como enteros de cuatro dígitos. Se le ha pedido a usted escribir un programa que cifre los datos para poderlos transmitir con mayor seguridad. Su programa deberá leer un entero de 4 dígitos y cifrarlo como sigue: sustituya cada dígito por (ese_digito+7)%10. Luego intercambie el primer y tercer dígitos luego el segundo y cuarto dígitos. Luego imprima el entero cifrado.
+//Escriba otro programa que recoja un entero de cuatro dígitos cifrado y lo descifre para formar el número original.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numeroOriginal, numeroCifrado;
+    cout << "--- PROGRAMA 1: CIFRADO ---\n";
+    cout << "Ingrese un numero de 4 digitos para cifrar: ";
+    cin >> numeroOriginal;
+
+    // Descomponemos el número en dígitos individuales de manera simple
+    int d1 = numeroOriginal / 1000;
+    int d2 = (numeroOriginal / 100) % 10;
+    int d3 = (numeroOriginal / 10) % 10;
+    int d4 = numeroOriginal % 10;
+
+    // Operación matemática del enunciado: (digito + 7) % 10
+    d1 = (d1 + 7) % 10;
+    d2 = (d2 + 7) % 10;
+    d3 = (d3 + 7) % 10;
+    d4 = (d4 + 7) % 10;
+
+    // Intercambio: 1ro con 3ro, y 2do con 4to. Armamos el número cifrado final
+    int cifradoFinal = (d3 * 1000) + (d4 * 100) + (d1 * 10) + d2;
+    cout << "Numero cifrado para transmitir: " << cifradoFinal << "\n\n";
+
+
+    cout << "--- PROGRAMA 2: DESCIFRADO ---\n";
+    cout << "Ingrese el numero de 4 digitos cifrado para recuperar el original: ";
+    cin >> numeroCifrado;
+
+    // Volvemos a extraer las posiciones del número cifrado
+    int c1 = numeroCifrado / 1000;
+    int c2 = (numeroCifrado / 100) % 10;
+    int c3 = (numeroCifrado / 10) % 10;
+    int c4 = numeroCifrado % 10;
+
+    // Deshacemos el intercambio volviendo a cruzar las posiciones originales
+    int origD1 = c3;
+    int origD2 = c4;
+    int origD3 = c1;
+    int origD4 = c2;
+
+    // Deshacemos la operación matemática (+7) % 10 sumando 3 y aplicando % 10
+    origD1 = (origD1 + 3) % 10;
+    origD2 = (origD2 + 3) % 10;
+    origD3 = (origD3 + 3) % 10;
+    origD4 = (origD4 + 3) % 10;
+
+    int descompuestoOriginal = (origD1 * 1000) + (origD2 * 100) + (origD3 * 10) + origD4;
+    cout << "Numero original recuperado: " << descompuestoOriginal << "\n";
+
+    return 0;
+}
+
