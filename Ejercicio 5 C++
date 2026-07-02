@@ -1,0 +1,50 @@
+//Calcule la suma y producto de fracciones, antes de realizar las operaciones es necesario que las dos fracciones estén simplificadas a su mínima expresión.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num1, den1, num2, den2;
+
+    cout << "Fraccion 1 - Ingrese numerador y denominador separados por un espacio: ";
+    cin >> num1 >> den1;
+    cout << "Fraccion 2 - Ingrese numerador y denominador separados por un espacio: ";
+    cin >> num2 >> den2;
+
+    // --- SIMPLIFICACIÓN DE FRACCIÓN 1 ---
+    // Buscamos el Máximo Común Divisor de forma simple
+    int mcd1 = 1;
+    int menor1 = (num1 < den1) ? num1 : den1;
+    for (int i = 1; i <= menor1; i++) {
+        if (num1 % i == 0 && den1 % i == 0) {
+            mcd1 = i;
+        }
+    }
+    num1 = num1 / mcd1;
+    den1 = den1 / mcd1;
+
+    // --- SIMPLIFICACIÓN DE FRACCIÓN 2 ---
+    int mcd2 = 1;
+    int menor2 = (num2 < den2) ? num2 : den2;
+    for (int i = 1; i <= menor2; i++) {
+        if (num2 % i == 0 && den2 % i == 0) {
+            mcd2 = i;
+        }
+    }
+    num2 = num2 / mcd2;
+    den2 = den2 / mcd2;
+
+    // --- OPERACIONES ---
+    // Suma: (a/b) + (c/d) = (a*d + b*c) / (b*d)
+    int numSuma = (num1 * den2) + (den1 * num2);
+    int denSuma = den1 * den2;
+
+    // Producto: (a/b) * (c/d) = (a*c) / (b*d)
+    int numProd = num1 * num2;
+    int denProd = den1 * den2;
+
+    cout << "\nFracciones simplificadas de origen: " << num1 << "/" << den1 << " y " << num2 << "/" << den2 << "\n";
+    cout << "La suma es: " << numSuma << "/" << denSuma << "\n";
+    cout << "El producto es: " << numProd << "/" << denProd << "\n";
+
+    return 0;
+}
