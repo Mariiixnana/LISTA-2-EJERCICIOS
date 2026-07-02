@@ -1,0 +1,39 @@
+//Un número gemelo es aquel cuya primera mitad de dígitos es igual a la segunda mitad. Si la cantidad de dígitos es impar, no deberá tomarse en cuenta el dígito del medio 
+Ej. 123123. Hacer un programa para contar los números gemelos de una secuencia de números de entrada.
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int cantidadNumeros, contadorGemelos = 0;
+    cout << "Cuantos numeros vas a ingresar en la secuencia?: ";
+    cin >> cantidadNumeros;
+
+    for (int i = 0; i < cantidadNumeros; i++) {
+        string num;
+        cout << "Ingresa un numero: ";
+        cin >> num;
+
+        int longitud = num.length();
+        int mitad = longitud / 2;
+
+        // Extraemos la primera mitad y la segunda mitad (ignorando el centro si es impar)
+        string primeraMitad = num.substr(0, mitad);
+        string segundaMitad;
+
+        if (longitud % 2 == 0) {
+            segundaMitad = num.substr(mitad);
+        } else {
+            segundaMitad = num.substr(mitad + 1); // Se salta el elemento del medio
+        }
+
+        // Si ambas mitades coinciden, es un número gemelo
+        if (primeraMitad == segundaMitad) {
+            contadorGemelos++;
+        }
+    }
+
+    cout << "Cantidad de numeros gemelos encontrados: " << contadorGemelos << "\n";
+
+    return 0;
+}
